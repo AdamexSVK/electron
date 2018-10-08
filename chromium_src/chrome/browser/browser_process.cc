@@ -10,8 +10,7 @@
 
 BrowserProcess* g_browser_process = NULL;
 
-BrowserProcess::BrowserProcess()
-    : print_job_manager_(nullptr) {
+BrowserProcess::BrowserProcess() : print_job_manager_(nullptr) {
 #if BUILDFLAG(ENABLE_PRINTING_ELECTRON)
   print_job_manager_.reset(new printing::PrintJobManager());
 #endif
