@@ -50,10 +50,10 @@
 #include "chrome/renderer/pepper/pepper_helper.h"
 #endif  // BUILDFLAG(ENABLE_PEPPER_FLASH)
 
-#if BUILDFLAG(ENABLE_PRINTING)
+#if BUILDFLAG(ENABLE_PRINTING_ELECTRON)
 #include "chrome/renderer/printing/chrome_print_render_frame_helper_delegate.h"
 #include "components/printing/renderer/print_render_frame_helper.h"
-#endif  // BUILDFLAG(ENABLE_PRINTING)
+#endif  // BUILDFLAG(ENABLE_PRINTING_ELECTRON)
 
 namespace atom {
 
@@ -174,7 +174,7 @@ void RendererClientBase::RenderFrameCreated(
   new PepperHelper(render_frame);
 #endif
   new ContentSettingsObserver(render_frame);
-#if BUILDFLAG(ENABLE_PRINTING)
+#if BUILDFLAG(ENABLE_PRINTING_ELECTRON)
   new printing::PrintRenderFrameHelper(
       render_frame, std::make_unique<ChromePrintRenderFrameHelperDelegate>());
 #endif
