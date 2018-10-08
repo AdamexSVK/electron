@@ -380,7 +380,7 @@ patches:
   file: allow_nested_error_trackers.patch
   description: |
     Only one X11ErrorTracker should exist at a time, but upstream has a bug
-    where two can exist if running in headless mode -- 
+    where two can exist if running in headless mode --
       ui::(anonymous namespace)::SupportsEWMH() [inner tracker is created]
       ui::WmSupportsHint()
       ui::IsX11WindowFullScreen()
@@ -483,3 +483,8 @@ patches:
   description: |
     Pass idle quit closure for main message loop, so that pending tasks are
     run before shutdown.
+-
+  author: Heilig Benedek <benecene@gmail.com>
+  file: tts.patch
+  description:  |
+    Add changeset that was previously applied to sources in chromium_src
