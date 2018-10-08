@@ -210,7 +210,9 @@ void AtomBrowserClient::RenderProcessWillLaunch(
   if (IsProcessObserved(process_id))
     return;
 
+#if BUILDFLAG(ENABLE_PRINTING_ELECTRON)
   host->AddFilter(new printing::PrintingMessageFilter(process_id));
+#endif
   host->AddFilter(new TtsMessageFilter(process_id, host->GetBrowserContext()));
 
   ProcessPreferences prefs;

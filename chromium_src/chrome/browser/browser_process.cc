@@ -5,12 +5,16 @@
 #include "chrome/browser/browser_process.h"
 
 #include "chrome/browser/printing/print_job_manager.h"
+#include "electron/buildflags/buildflags.h"
 #include "ui/base/l10n/l10n_util.h"
 
 BrowserProcess* g_browser_process = NULL;
 
 BrowserProcess::BrowserProcess()
-    : print_job_manager_(new printing::PrintJobManager) {
+    : print_job_manager_(nullptr), icon_manager_(new IconManager) {
+#if BUILDFLAG(ENABLE_PRINTING_ELECTRON)
+  print_job_manager_.reset(new printing::PrintJobManager());
+#endif
   g_browser_process = this;
 }
 
